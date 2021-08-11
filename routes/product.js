@@ -1,9 +1,10 @@
 const router = require('express').Router()
 const productController = require('../controllers/productController')
 const {check} = require ('express-validator')
+const auth = require('../middleware/auth')
 
 
-router.get('/', 
+router.get('/',
     productController.getProducts
 )
 
@@ -11,7 +12,10 @@ router.get('/:id',
     productController.getProduct
 )
 
+
+// Auth
 router.post('/', 
+    auth,
     [
         check('name', 'Name is required').not().isEmpty(),
         check('description', 'Description is required').not().isEmpty(),
@@ -23,6 +27,7 @@ router.post('/',
 )
 
 router.put('/:id',
+    auth,
     [
         check('name', 'Name is required').not().isEmpty(),
         check('description', 'Description is required').not().isEmpty(),
@@ -33,6 +38,7 @@ router.put('/:id',
 )
 
 router.delete('/:id',
+    auth,
     productController.deleteProduct
 )
 

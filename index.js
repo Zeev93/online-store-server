@@ -19,8 +19,9 @@ app.use(cors())
 
 
 // Routes
-app.use('/api/user', require('./routes/auth'))
-app.use('/api/products', require('./routes/products'))
+app.use('/api/user', require('./routes/user'))
+app.use('/api/product', require('./routes/product'))
+app.use('/api/category', require('./routes/category'))
 
 // Iniciar servidor express
 const PORT = process.env.PORT || 3010

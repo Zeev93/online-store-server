@@ -24,7 +24,12 @@ const productSchema = mongoose.Schema({
     created_at: {
         type: Date,
         default: Date.now
-    }
+    },
+
+    // category: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Category'
+    // }
 })
 
 module.exports = mongoose.model('Product', productSchema)
